@@ -2,6 +2,21 @@
 
 ウェビナー用のストーリーライン・スライド原稿を **CSV** で管理し、`python-pptx` で **PowerPoint（.pptx）** を生成します。生成したファイルは **Canva にインポート**してデザイン調整する想定です（Canva API は使用しません）。
 
+同じリポジトリの **`web/`** に **Next.js**（App Router・TypeScript・Tailwind CSS・ESLint）を用意しています。ルート直下は既存の CSV / Python と共存させるため、npm の命名規則（フォルダ名に大文字を含むとプロジェクト名に使えない）にも合わせ **`web/` サブフォルダ**に初期化しています。
+
+## Next.js（`web/`）
+
+```powershell
+cd web
+npm install
+npm run dev
+```
+
+- 開発サーバー: 通常は [http://localhost:3000](http://localhost:3000)  
+- 本番ビルド: `npm run build` → `npm run start`
+
+ソースは `web/app/` 以下（App Router）です。
+
 ## 必要な環境
 
 - **Python 3.10 以降**（インストール時に「Add Python to PATH」にチェック推奨）
@@ -66,6 +81,7 @@ CSV は **UTF-8**（BOM 可）で保存してください。
 
 | 種別 | ファイル例 |
 |------|------------|
+| Next.js アプリ | `web/`（`package.json`, `web/app/`） |
 | 生成スクリプト | `csv_to_pptx.py`, `run_csv_to_pptx.ps1` |
 | 依存定義 | `requirements-pptx.txt` |
 | マスター・マッピング | `webinar_slide_map_22rows.csv`, `webinar_22slides_master_spec.txt` |
