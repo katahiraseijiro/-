@@ -90,6 +90,31 @@ CSV は **UTF-8**（BOM 可）で保存してください。
 
 生成した **`.pptx` は `.gitignore` で除外**しています（バイナリの肥大化を避けるため）。
 
+### ファイルをツリーで見る
+
+リポジトリの中身をフォルダのツリーで一覧し、そのまま中身も読めるページを用意しています。
+
+- **`tree_view.html`** をブラウザで開くだけです（インターネット接続やサーバは不要）。
+  左のツリーからファイルを選ぶと右に中身が出ます。**CSV は表として**、その他はテキストとして表示します。
+- 内容はリポジトリのスナップショットなので、ファイルを追加・編集したら作り直します。
+
+```powershell
+python tools/build_tree_view.py
+```
+
+`-o` で出力先を変えられます（例: `python tools/build_tree_view.py -o docs/tree.html`）。
+対象は `git ls-files` の結果、つまり **Git 管理下のファイル**だけです。
+
+エディタやコマンドでツリーを見たい場合はこちら。
+
+| 方法 | 手順 |
+|------|------|
+| VS Code | フォルダを開くと左のエクスプローラーがツリーになる（`code .`） |
+| GitHub | リポジトリのページで `t` キー、またはファイル一覧左の «Files» サイドバー |
+| PowerShell | `tree /F` |
+| macOS / Linux | `tree -I ".git\|node_modules"` |
+| Git のみ | `git ls-files` |
+
 ## トラブルシューティング
 
 - **`python` が認識されない** — PATH を確認するか、[python.org](https://www.python.org/downloads/) の公式インストーラで入れ直す  
